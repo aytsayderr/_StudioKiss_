@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>StudioKiss | Организация мероприятий</title>
     <!-- Яндекс.Метрика -->
     <script>
@@ -27,25 +27,33 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: #f5f9fe;
             color: #1a2c3e;
             line-height: 1.45;
+            overflow-x: hidden;
         }
 
         .container {
+            width: 100%;
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 16px;
         }
 
+        /* Мобильная оптимизация header */
         header {
             background: #ffffff;
             border-bottom: 2px solid #cbdff2;
-            padding: 20px 0;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(0px);
         }
 
         .header-inner {
@@ -53,23 +61,28 @@
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            gap: 12px;
         }
 
         .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
             letter-spacing: -0.3px;
             color: #2c5a7a;
         }
 
         .logo p {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #567d9e;
         }
 
         .contact-info {
             text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .contact-info div:first-child {
+            font-weight: 600;
             font-size: 0.9rem;
         }
 
@@ -79,79 +92,101 @@
             font-weight: 500;
         }
 
+        .social-icons {
+            display: flex;
+            gap: 8px;
+        }
+
         .social-icons a {
-            margin-left: 12px;
             text-decoration: none;
             font-weight: bold;
             color: #2c5a7a;
             border: 1px solid #cbdff2;
-            padding: 6px 10px;
+            padding: 6px 12px;
             display: inline-block;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            transition: all 0.2s;
         }
 
-        .social-icons a:hover {
-            background: #e2edf9;
-        }
-
+        /* Мобильное меню - гамбургер */
         .main-nav {
             background: #e9f0f8;
-            padding: 12px 0;
             border-bottom: 1px solid #cbdff2;
+            position: sticky;
+            top: 74px;
+            z-index: 99;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 8px 12px;
+            color: #1f4e6e;
         }
 
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 28px;
+            gap: 20px;
             list-style: none;
+            padding: 12px 0;
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
             color: #1f4e6e;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
+            padding: 6px 0;
+            display: inline-block;
+            white-space: nowrap;
         }
 
-        .nav-links a:hover {
-            color: #0a3149;
-            text-decoration: underline;
+        .nav-links a:active {
+            opacity: 0.7;
         }
 
         section {
-            margin: 48px 0;
+            margin: 32px 0;
         }
 
         .section-title {
-            font-size: 1.8rem;
-            font-weight: 500;
-            border-left: 6px solid #6c9ebf;
-            padding-left: 18px;
-            margin-bottom: 32px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-left: 5px solid #6c9ebf;
+            padding-left: 14px;
+            margin-bottom: 24px;
             color: #1f4e6e;
         }
 
         .order-form-card {
             background: white;
-            padding: 28px;
+            padding: 20px;
             border: 1px solid #cbdff2;
+            border-radius: 12px;
         }
 
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
+            grid-template-columns: 1fr;
+            gap: 14px;
         }
 
         input, select, button {
-            padding: 12px 14px;
+            padding: 14px 16px;
             border: 1px solid #cbdff2;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-family: inherit;
             background: white;
-            border-radius: 4px;
+            border-radius: 10px;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         button {
@@ -160,29 +195,38 @@
             font-weight: 600;
             border: none;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s;
+            padding: 14px;
         }
 
-        button:hover {
+        button:active {
+            transform: scale(0.98);
             background: #1f415c;
         }
 
+        /* Слайдер с сенсорной поддержкой */
         .gallery-slider {
             position: relative;
             background: #eef3fc;
             border: 1px solid #cbdff2;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 16px;
+            touch-action: pan-y pinch-zoom;
         }
 
         .slides {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: grab;
+        }
+
+        .slides:active {
+            cursor: grabbing;
         }
 
         .slide {
             min-width: 100%;
-            height: 360px;
+            height: 280px;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -192,58 +236,62 @@
             color: white;
             text-shadow: 0 1px 3px rgba(0,0,0,0.3);
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .slider-buttons {
             position: absolute;
-            bottom: 16px;
-            right: 16px;
+            bottom: 12px;
+            right: 12px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
         .slider-buttons button {
-            background: rgba(44,90,122,0.8);
+            background: rgba(44,90,122,0.85);
+            backdrop-filter: blur(4px);
             border: none;
             color: white;
-            font-size: 1.2rem;
-            padding: 6px 14px;
-            border-radius: 4px;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 30px;
+            min-width: 44px;
+            min-height: 44px;
         }
 
-        .services-grid, .interior-grid {
+        /* Сетки для мобильных */
+        .services-grid, .interior-grid, .services-catalog {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
         .service-item, .interior-item {
             background: white;
             border: 1px solid #cbdff2;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 18px;
+            border-radius: 16px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .service-item:hover, .interior-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        .service-item:active, .interior-item:active {
+            transform: scale(0.99);
         }
 
         .service-photo {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 16px;
+            border-radius: 12px;
+            margin-bottom: 14px;
             background: #eef3fc;
         }
 
         .price {
             font-weight: 700;
             color: #2c5a7a;
-            margin: 10px 0;
+            margin: 8px 0;
+            font-size: 1.1rem;
         }
 
         .btn-more {
@@ -252,30 +300,31 @@
             background: none;
             border: 1px solid #2c5a7a;
             color: #2c5a7a;
-            padding: 6px 18px;
+            padding: 8px 20px;
             text-decoration: none;
             font-weight: 500;
             cursor: pointer;
-            border-radius: 4px;
-            transition: background 0.2s;
+            border-radius: 30px;
+            transition: all 0.2s;
+            text-align: center;
         }
 
-        .btn-more:hover {
+        .btn-more:active {
             background: #e2edf9;
+            transform: scale(0.96);
         }
 
         footer {
             background: #e0ecf5;
             border-top: 2px solid #cbdff2;
-            padding: 32px 0;
-            margin-top: 40px;
+            padding: 28px 0;
+            margin-top: 32px;
         }
 
         .footer-inner {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 30px;
+            flex-direction: column;
+            gap: 24px;
         }
 
         .footer-menu a {
@@ -284,111 +333,219 @@
             text-decoration: none;
             color: #1f4e6e;
             cursor: pointer;
+            padding: 6px 0;
         }
 
         .footer-social a {
             margin-right: 16px;
             text-decoration: none;
             font-weight: 500;
+            display: inline-block;
+            padding: 6px 0;
         }
 
         hr {
             border-color: #cbdff2;
-            margin: 20px 0;
+            margin: 16px 0;
         }
 
         .page-card {
             background: white;
             border: 1px solid #cbdff2;
-            padding: 28px;
-            margin-bottom: 40px;
-            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border-radius: 20px;
         }
 
         .about-flex {
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+            flex-direction: column;
+            gap: 20px;
             align-items: center;
         }
 
         .about-img {
-            flex: 1;
+            width: 100%;
             background: #cbdff2;
-            min-height: 260px;
+            min-height: 200px;
             background-size: cover;
             background-position: center;
-            border-radius: 8px;
+            border-radius: 16px;
         }
 
         .filters {
             display: flex;
-            gap: 12px;
-            margin-bottom: 28px;
+            gap: 10px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            -webkit-overflow-scrolling: touch;
         }
+
         .filter-btn {
             background: #eef3fc;
             border: 1px solid #cbdff2;
-            padding: 8px 18px;
+            padding: 10px 18px;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 40px;
             transition: all 0.2s;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
+
         .filter-btn.active {
             background: #2c5a7a;
             color: white;
             border-color: #2c5a7a;
         }
-        .services-catalog {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 26px;
-            margin-bottom: 32px;
-        }
+
         .pagination {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
+
         .pagination button {
             background: white;
             border: 1px solid #cbdff2;
             color: #1f4e6e;
             cursor: pointer;
-            padding: 8px 14px;
-            border-radius: 4px;
+            padding: 10px 16px;
+            border-radius: 40px;
+            min-width: 44px;
         }
+
         .pagination button.active-page {
             background: #2c5a7a;
             color: white;
         }
 
-        @media (max-width: 768px) {
-            .header-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-            .contact-info {
-                text-align: center;
-            }
-            .nav-links {
-                justify-content: center;
-                gap: 18px;
-            }
-            .section-title {
-                font-size: 1.5rem;
-            }
-            .slide {
-                height: 260px;
-            }
+        /* Баннер-ссылки */
+        .quick-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        @media (max-width: 475px) {
+        .quick-links .btn-more {
+            background: #fff;
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        /* Адаптация для планшетов */
+        @media (min-width: 640px) {
             .container {
-                padding: 0 16px;
+                padding: 0 24px;
+            }
+            .services-grid, .interior-grid, .services-catalog {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-inner {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .about-flex {
+                flex-direction: row;
             }
             .form-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .slide {
+                height: 360px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid, .interior-grid, .services-catalog {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .form-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+            .nav-toggle {
+                display: none;
+            }
+            .nav-links {
+                display: flex !important;
+            }
+        }
+
+        /* Мобильное меню (по умолчанию показано, для маленьких экранов сворачиваем) */
+        @media (max-width: 768px) {
+            .main-nav {
+                position: relative;
+                top: 0;
+            }
+            .nav-toggle {
+                display: block;
+                width: 100%;
+                text-align: left;
+                background: #e9f0f8;
+                border: none;
+                padding: 12px 16px;
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: #1f4e6e;
+                border-bottom: 1px solid #cbdff2;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                padding: 0;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .nav-links li {
+                border-bottom: 1px solid #cbdff2;
+            }
+            .nav-links a {
+                display: block;
+                padding: 14px 16px;
+                white-space: normal;
+            }
+            .header-inner {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+            .contact-info {
+                font-size: 0.7rem;
+            }
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .logo p {
+                display: none;
+            }
+            .social-icons a {
+                padding: 4px 8px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Улучшение touch-целей */
+        button, a, .filter-btn, .btn-more, .pagination button {
+            touch-action: manipulation;
+        }
+
+        /* Карта адаптив */
+        iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+        }
+        
+        @media (min-width: 640px) {
+            iframe {
+                height: 250px;
             }
         }
     </style>
@@ -412,7 +569,8 @@
 </header>
 
 <div class="main-nav">
-    <div class="container">
+    <button class="nav-toggle" id="navToggle" aria-label="Меню">☰ Меню</button>
+    <div class="container" style="padding: 0;">
         <ul class="nav-links" id="mainNav">
             <li><a data-page="home">Главная</a></li>
             <li><a data-page="about">О нас</a></li>
@@ -447,13 +605,13 @@
             <a href="#">VK</a> <a href="#">Max</a>
         </div>
     </div>
-    <div class="container" style="text-align:center; font-size:0.75rem; margin-top:20px;">
+    <div class="container" style="text-align:center; font-size:0.7rem; margin-top:20px;">
         © StudioKiss 2026 — Организация мероприятий и дизайн-студия
     </div>
 </footer>
 
 <script>
-    // Все пути к изображениям теперь с префиксом "image/"
+    // Все пути к изображениям с префиксом "image/"
     const galleryImages = [
         "image/vecher.jpg",
         "image/svadiba.jpg",
@@ -505,6 +663,8 @@
     let currentServicesPage = 1;
     const perPage = 3;
     const app = document.getElementById('appRoot');
+    let touchStartX = 0;
+    let touchEndX = 0;
 
     function render() {
         if (currentPage === "home") renderHome();
@@ -518,6 +678,7 @@
         
         attachNavEvents();
         attachFormSubmit();
+        closeMobileMenuOnLink();
     }
 
     function renderHome() {
@@ -551,10 +712,10 @@
                 </div>
             </section>
             <section>
-                <div style="display:flex; gap:20px; flex-wrap:wrap; background:#eef3fc; padding:24px; justify-content:center; border:1px solid #cbdff2; border-radius:8px;">
-                    <a data-page="about" class="btn-more" style="background:#fff;">О нас</a>
-                    <a data-page="servicesPage" class="btn-more" style="background:#fff;">Наши услуги</a>
-                    <a data-page="contacts" class="btn-more" style="background:#fff;">Контакты</a>
+                <div class="quick-links">
+                    <a data-page="about" class="btn-more">О нас</a>
+                    <a data-page="servicesPage" class="btn-more">Наши услуги</a>
+                    <a data-page="contacts" class="btn-more">Контакты</a>
                 </div>
             </section>
             <section>
@@ -574,12 +735,12 @@
                 <div class="interior-grid">
                     ${interiorStudios.map(st => `
                         <div class="interior-item">
-                            <div style="background-image: url('${st.image}'); background-size: cover; background-position: center; height:160px; margin-bottom:16px; border-radius:4px;">
+                            <div style="background-image: url('${st.image}'); background-size: cover; background-position: center; height:160px; margin-bottom:16px; border-radius:12px;">
                             </div>
                             <h3>${st.title}</h3>
                             <p>${st.desc}</p>
                             <div class="price">${st.price}</div>
-                            <div style="font-size:0.85rem; color:#567d9e; margin-top:8px;"> ${st.features}</div>
+                            <div style="font-size:0.8rem; color:#567d9e; margin-top:6px;"> ${st.features}</div>
                             <a data-page="orderQuick" class="btn-more">Забронировать</a>
                         </div>
                     `).join('')}
@@ -587,6 +748,7 @@
             </section>
         `;
         initGallerySlider();
+        initTouchSlider();
     }
 
     function renderAbout() {
@@ -594,7 +756,7 @@
     }
 
     function renderGalleryFull() {
-        app.innerHTML = `<div class="page-card"><h2 class="section-title">Галерея работ</h2><div class="gallery-slider" id="gallerySliderFull"><div class="slides" id="gallerySlidesFull">${galleryImages.map(img=>`<div class="slide" style="background-image:url('${img}'); height:400px;"></div>`).join('')}</div><div class="slider-buttons"><button id="prevSlideFull">←</button><button id="nextSlideFull">→</button></div></div></div>`;
+        app.innerHTML = `<div class="page-card"><h2 class="section-title">Галерея работ</h2><div class="gallery-slider" id="gallerySliderFull"><div class="slides" id="gallerySlidesFull">${galleryImages.map(img=>`<div class="slide" style="background-image:url('${img}'); height:350px;"></div>`).join('')}</div><div class="slider-buttons"><button id="prevSlideFull">←</button><button id="nextSlideFull">→</button></div></div></div>`;
         let idx=0;
         const slidesDiv = document.getElementById('gallerySlidesFull');
         if(!slidesDiv) return;
@@ -603,6 +765,7 @@
         const nextBtn = document.getElementById('nextSlideFull');
         if(prevBtn) prevBtn.addEventListener('click',()=>{ idx=(idx-1+galleryImages.length)%galleryImages.length; update();});
         if(nextBtn) nextBtn.addEventListener('click',()=>{ idx=(idx+1)%galleryImages.length; update();});
+        addTouchToSlider(slidesDiv, (newIdx)=>{ idx=newIdx; update(); });
     }
 
     function renderServicesCatalog() {
@@ -619,17 +782,17 @@
                         </div>
                     `).join('')}</div><div class="pagination" id="paginationBlock"></div></div>`;
         const pagDiv = document.getElementById('paginationBlock');
-        if(pagDiv) {
+        if(pagDiv && totalPages>1) {
             pagDiv.innerHTML = '';
             for(let i=1;i<=totalPages;i++) pagDiv.innerHTML += `<button class="page-btn ${i===currentServicesPage?'active-page':''}" data-page="${i}">${i}</button>`;
+            document.querySelectorAll('.page-btn').forEach(btn=>btn.addEventListener('click',(e)=>{
+                currentServicesPage = parseInt(btn.dataset.page);
+                renderServicesCatalog();
+            }));
         }
         document.querySelectorAll('.filter-btn').forEach(btn=>btn.addEventListener('click',(e)=>{
             currentServiceFilter = btn.dataset.filter;
             currentServicesPage = 1;
-            renderServicesCatalog();
-        }));
-        document.querySelectorAll('.page-btn').forEach(btn=>btn.addEventListener('click',(e)=>{
-            currentServicesPage = parseInt(btn.dataset.page);
             renderServicesCatalog();
         }));
     }
@@ -638,17 +801,17 @@
         app.innerHTML = `
             <div class="page-card">
                 <h2 class="section-title">Интерьерные студии</h2>
-                <p style="margin-bottom:24px;">Аренда стильных пространств для ваших мероприятий, съёмок и встреч</p>
+                <p style="margin-bottom:20px;">Аренда стильных пространств для ваших мероприятий, съёмок и встреч</p>
                 <div class="interior-grid">
                     ${interiorStudios.map(st => `
                         <div class="interior-item">
-                            <div style="background-image: url('${st.image}'); background-size: cover; background-position: center; height:200px; margin-bottom:16px; border-radius:4px;">
+                            <div style="background-image: url('${st.image}'); background-size: cover; background-position: center; height:180px; margin-bottom:14px; border-radius:12px;">
                             </div>
                             <h3>${st.title}</h3>
                             <p>${st.desc}</p>
                             <div class="price">${st.price}</div>
-                            <div style="font-size:0.85rem; color:#567d9e; margin-top:8px;">📐 ${st.features}</div>
-                            <a data-page="orderQuick" class="btn-more" style="margin-top:16px;">Забронировать студию</a>
+                            <div style="font-size:0.8rem; color:#567d9e;">📐 ${st.features}</div>
+                            <a data-page="orderQuick" class="btn-more" style="margin-top:14px;">Забронировать студию</a>
                         </div>
                     `).join('')}
                 </div>
@@ -657,7 +820,7 @@
     }
 
     function renderContacts() {
-        app.innerHTML = `<div class="page-card"><h2 class="section-title">Контакты</h2><p>Адрес: Санкт-Петербург, Российский проспект 10, офис 405</p><p>Телефон: +7 (812) 513-67-67, +7 (921) 513-67-67</p><p>E-mail: hello@studiokiss.ru, booking@studiokiss.ru</p><p> Режим работы: ежедневно 9:00 – 20:00</p><hr><iframe width="100%" height="250" style="border:1px solid #cbdff2; background:#f0f0f0; border-radius:8px;" title="Карта проезда" src="https://maps.google.com/maps?q=Санкт-Петербург%20Российский%20проспект%2010&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe></div>`;
+        app.innerHTML = `<div class="page-card"><h2 class="section-title">Контакты</h2><p>📍 Адрес: Санкт-Петербург, Российский проспект 10, офис 405</p><p>📞 Телефон: +7 (812) 513-67-67, +7 (921) 513-67-67</p><p>✉️ E-mail: hello@studiokiss.ru, booking@studiokiss.ru</p><p>🕒 Режим работы: ежедневно 9:00 – 20:00</p><hr><iframe width="100%" height="220" style="border:1px solid #cbdff2; background:#f0f0f0; border-radius:12px;" title="Карта проезда" src="https://maps.google.com/maps?q=Санкт-Петербург%20Российский%20проспект%2010&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe></div>`;
     }
 
     function renderOrderFormOnly() {
@@ -694,18 +857,78 @@
             currentServicesPage = 1; 
             currentServiceFilter = 'all'; 
             render(); 
+            closeMobileMenu();
         }
     }
 
-    function initGallerySlider() {
-        let idx=0; 
-        const slidesDiv=document.getElementById('gallerySlides'); 
+    function closeMobileMenuOnLink() {
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+            link.removeEventListener('click', closeMobileMenu);
+            link.addEventListener('click', closeMobileMenu);
+        });
+    }
+    
+    function closeMobileMenu() {
+        const nav = document.querySelector('.nav-links');
+        if(nav && window.innerWidth <= 768) {
+            nav.classList.remove('show');
+        }
+    }
+
+    // Сенсорные жесты для слайдера
+    function initTouchSlider() {
+        const slider = document.getElementById('gallerySlider');
+        if(!slider) return;
+        const slidesDiv = document.getElementById('gallerySlides');
         if(!slidesDiv) return;
-        const update=()=> slidesDiv.style.transform=`translateX(-${idx*100}%)`;
+        addTouchToSlider(slidesDiv, (idx) => {
+            slidesDiv.style.transform = `translateX(-${idx * 100}%)`;
+        });
+    }
+
+    function addTouchToSlider(slidesElement, onSlideChange) {
+        let currentIdx = 0;
+        let startX = 0;
+        let isDragging = false;
+        slidesElement.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+        slidesElement.addEventListener('touchmove', (e) => {
+            if(!isDragging) return;
+            const diff = e.touches[0].clientX - startX;
+            if(Math.abs(diff) > 50) {
+                if(diff > 0) currentIdx = (currentIdx - 1 + galleryImages.length) % galleryImages.length;
+                else currentIdx = (currentIdx + 1) % galleryImages.length;
+                onSlideChange(currentIdx);
+                isDragging = false;
+                startX = e.touches[0].clientX;
+            }
+        });
+        slidesElement.addEventListener('touchend', () => { isDragging = false; });
+    }
+
+    let sliderIndex = 0;
+    function initGallerySlider() {
+        sliderIndex = 0;
+        const slidesDiv = document.getElementById('gallerySlides');
+        if(!slidesDiv) return;
+        const update=()=> slidesDiv.style.transform=`translateX(-${sliderIndex*100}%)`;
         const prevBtn = document.getElementById('prevSlide');
         const nextBtn = document.getElementById('nextSlide');
-        if(prevBtn) prevBtn.addEventListener('click',()=>{ idx=(idx-1+galleryImages.length)%galleryImages.length; update();});
-        if(nextBtn) nextBtn.addEventListener('click',()=>{ idx=(idx+1)%galleryImages.length; update();});
+        if(prevBtn) prevBtn.addEventListener('click',()=>{ sliderIndex=(sliderIndex-1+galleryImages.length)%galleryImages.length; update();});
+        if(nextBtn) nextBtn.addEventListener('click',()=>{ sliderIndex=(sliderIndex+1)%galleryImages.length; update();});
+        addTouchToSlider(slidesDiv, (newIdx)=>{ sliderIndex=newIdx; update(); });
+    }
+
+    // Мобильное меню
+    const toggleBtn = document.getElementById('navToggle');
+    if(toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('show');
+        });
     }
 
     render();
