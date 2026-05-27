@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -810,7 +809,7 @@
                             <h3>${st.title}</h3>
                             <p>${st.desc}</p>
                             <div class="price">${st.price}</div>
-                            <div style="font-size:0.8rem; color:#567d9e;">📐 ${st.features}</div>
+                            <div style="font-size:0.8rem; color:#567d9e;"> ${st.features}</div>
                             <a data-page="orderQuick" class="btn-more" style="margin-top:14px;">Забронировать студию</a>
                         </div>
                     `).join('')}
@@ -820,7 +819,7 @@
     }
 
     function renderContacts() {
-        app.innerHTML = `<div class="page-card"><h2 class="section-title">Контакты</h2><p>📍 Адрес: Санкт-Петербург, Российский проспект 10, офис 405</p><p>📞 Телефон: +7 (812) 513-67-67, +7 (921) 513-67-67</p><p>✉️ E-mail: hello@studiokiss.ru, booking@studiokiss.ru</p><p>🕒 Режим работы: ежедневно 9:00 – 20:00</p><hr><iframe width="100%" height="220" style="border:1px solid #cbdff2; background:#f0f0f0; border-radius:12px;" title="Карта проезда" src="https://maps.google.com/maps?q=Санкт-Петербург%20Российский%20проспект%2010&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe></div>`;
+        app.innerHTML = `<div class="page-card"><h2 class="section-title">Контакты</h2><p> Адрес: Санкт-Петербург, Российский проспект 10, офис 405</p><p> Телефон: +7 (812) 513-67-67, +7 (921) 513-67-67</p><p> E-mail: hello@studiokiss.ru, booking@studiokiss.ru</p><p> Режим работы: ежедневно 9:00 – 20:00</p><hr><iframe width="100%" height="220" style="border:1px solid #cbdff2; background:#f0f0f0; border-radius:12px;" title="Карта проезда" src="https://maps.google.com/maps?q=Санкт-Петербург%20Российский%20проспект%2010&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe></div>`;
     }
 
     function renderOrderFormOnly() {
